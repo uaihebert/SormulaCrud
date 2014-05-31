@@ -30,6 +30,11 @@ public class CustomerRepository {
         }
     }
 
+    private static Database getDatabase() {
+        Connection connection = createConnection();
+        return new Database(connection);
+    }
+
     private static void closeQuietly(Connection connection) {
         try{
             if(!connection.isClosed()){
@@ -38,11 +43,6 @@ public class CustomerRepository {
         } catch (Exception ex){
             System.out.println("Error closing the connection");
         }
-    }
-
-    private static Database getDatabase() {
-        Connection connection = createConnection();
-        return new Database(connection);
     }
 
     public static List<Customer> listAll() throws SormulaException {
