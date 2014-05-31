@@ -23,7 +23,8 @@ public class CustomerRepository {
 
     private static Connection createConnection() {
         try {
-            return DriverManager.getConnection("jdbc:mysql://localhost:3306/CRUD", "root", "root");
+            final String DATABASE_URL = "jdbc:mysql://localhost:3306/CRUD";
+            return DriverManager.getConnection(DATABASE_URL, "root", "root");
         } catch (SQLException e) {
             System.err.println("could not create connection: " + e.getMessage());
             throw new RuntimeException(e);
